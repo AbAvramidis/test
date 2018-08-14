@@ -12,7 +12,7 @@ scp:
 	ssh ${REMOTE} "unzip $(BUILD_FILE)"
 run:
 	./test.py ${ARG} >> log.txt
-	ssh ${REMOTE} "./file.py & >> log.txt"
+	ssh ${REMOTE} "./file.py &"
 	
 git2: run
 	git status
