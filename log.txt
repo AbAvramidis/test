@@ -10,3 +10,6 @@ The arguments are:  ['./test.py', 'ALLhere']
 This is the name of the script:  ./test.py
 Number of arguments:  2
 The arguments are:  ['./test.py', 'good']
+This is the name of the script:  ./test.py
+Number of arguments:  2
+The arguments are:  ['./test.py', 'good']

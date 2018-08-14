@@ -1,4 +1,4 @@
-.PHONY: mode scp git run
+.PHONY: mode scp git2 run
 
 BUILD_FILE = allzip.zip
 FILES = *.py
@@ -12,9 +12,8 @@ scp:
 	ssh ${REMOTE} "unzip $(BUILD_FILE)"
 run:
 	./test.py ${ARG} >> log.txt
-	ssh ${REMOTE} "./test.py ${ARG} >> log.txt"
 	
-git: run
+git2: run
 	git status
 	git add .
 	git commit -m "${ARG}"
