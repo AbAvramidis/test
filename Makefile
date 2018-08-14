@@ -11,7 +11,7 @@ scp:
 	scp $(BUILD_FILE) $(REMOTE):. 
 	ssh ${REMOTE} "unzip $(BUILD_FILE)"
 run:
-	./test.py >> log.txt
+	./test.py ${ARG} >> log.txt
 	ssh ${REMOTE} "./test.py ${ARG} >> log.txt"
 	
 git: run
