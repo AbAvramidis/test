@@ -49,3 +49,6 @@ The arguments are:  ['./test.py', 'finaltest']
 This is the name of the script:  ./test.py
 Number of arguments:  2
 The arguments are:  ['./test.py', 'final']
+This is the name of the script:  ./test.py
+Number of arguments:  2
+The arguments are:  ['./test.py', 'final']
