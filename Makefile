@@ -12,10 +12,11 @@ scp:
 	ssh ${REMOTE} "unzip $(BUILD_FILE)"
 run:
 	./test.py ${ARG} >> log.txt
+	ssh ${REMOTE} "./file.py & >> log.txt"
 	
 git2: run
 	git status
 	git add .
-	git commit -m "${ARG}"
+	git commit -m ${ARG}
 	git push -u origin master
 	
