@@ -1,0 +1,80 @@
+Jenkins & Github
+----------------
+
+https://www.youtube.com/watch?v=4OQ6Hk5hl0k
+https://www.youtube.com/watch?v=7svnd9b-BmU
+
+General field -> Github https://github.com/Abrams88/test/
+Source code -> https://github.com/Abrams88/test.git
+Build Triggers -> Github hook trigger and Poll SCM
+
+On github Settings -> Webhooks -> Add webhook
+http://10.0.10.10:8080/github-webhook/
+application/json
+
+Git hub not asking username & pass
+https://stackoverflow.com/questions/11403407/git-asks-for-username-every-time-i-push
+------------------
+
+.PHONY: mode scp git run
+
+BUILD_FILE = allzip.zip
+FILES = *.py
+REMOTE = ab@10.0.10.11
+ARG = " "
+
+mode:
+        zip -r9T $(BUILD_FILE) $(FILES)
+scp:
+        scp $(BUILD_FILE) $(REMOTE):.
+        ssh ${REMOTE} "unzip $(BUILD_FILE)"
+run:
+        ./test.py ${ARG} >> log.txt
+        ssh ${REMOTE} "./test.py ${ARG} >> log.txt"
+
+git: run
+        git status
+        git add .
+        git commit -m "${ARG}"
+        git push -u origin master
+
+
+--------------------------------
+
+.PHONY: mode scp git2 run
+
+BUILD_FILE = allzip.zip
+FILES = *.py
+REMOTE = ab@10.0.10.11
+ARG = " "
+
+mode:
+        zip -r9T $(BUILD_FILE) $(FILES)
+scp: mode
+        scp $(BUILD_FILE) $(REMOTE):.
+        ssh ${REMOTE} "unzip $(BUILD_FILE)"
+        ssh ${REMOTE} /bin/bash 'ls; pwd; python test.py; python file.py'
+run:
+        ./test.py ${ARG} >> log.txt
+        ./file.py & >> log.txt
+
+git2: run
+        git status
+        git add .
+        git commit -m ${ARG}
+        git push -u origin master
+
+-----------
+
+Bob Webserver
+
+python-simple-http-server
+
+git clone
+vagrant user
+sudo make install
+sudo systemctl start python-simple-http-server.service
+sudo systemctl status >>
+
+then from the Web browser
+10.0.10.10:9000 you can see the dir 
