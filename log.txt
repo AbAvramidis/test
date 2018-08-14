@@ -37,3 +37,6 @@ The arguments are:  ['./test.py', 'scriptinthebrack']
 This is the name of the script:  ./test.py
 Number of arguments:  2
 The arguments are:  ['./test.py', 'scriptin']
+This is the name of the script:  ./test.py
+Number of arguments:  2
+The arguments are:  ['./test.py', 'scriptin']
