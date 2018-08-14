@@ -10,9 +10,9 @@ mode:
 scp:
 	scp $(BUILD_FILE) $(REMOTE):. 
 	ssh ${REMOTE} "unzip $(BUILD_FILE)"
-run:
+run: 
 	./test.py ${ARG} >> log.txt
-	ssh ${REMOTE} ' ./file.py & '
+	./file.py & >> log.txt
 	
 git2: run
 	git status
