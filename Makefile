@@ -7,12 +7,12 @@ ARG = " "
 
 mode:
 	zip -r9T $(BUILD_FILE) $(FILES)
-scp:
+scp: mode
 	scp $(BUILD_FILE) $(REMOTE):. 
 	ssh ${REMOTE} "unzip $(BUILD_FILE)"
-run: 
+	ssh ${REMOTE} /bin/bash 'ls; pwd; python test.py'
+run: scp
 	./test.py ${ARG} >> log.txt
-	./file.py & >> log.txt
 	
 git2: run
 	git status
